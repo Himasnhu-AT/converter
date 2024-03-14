@@ -1,0 +1,284 @@
+{
+    "modules": [
+      {
+        "name": "UserModule",
+        "resources": [
+          {
+            "moduleEndpoint": "user",
+            "endpoints": [
+              {
+                "path": "/",
+                "methods": ["GET"],
+                "action": "Retrieve all user details",
+                "function": "getAllUsers",
+                "checks": {},
+                "return": {
+                  "200": {
+                    "description": "Success",
+                    "data": {
+                      "prisma": {
+                        "model": "User",
+                        "action": "findMany",
+                        "args": {}
+                      }
+                    }
+                  },
+                  "404": {
+                    "description": "Not Found"
+                  }
+                }
+              },
+              {
+                "path": "/{id}",
+                "methods": ["GET"],
+                "action": "Retrieve user details by ID",
+                "function": "getUserById",
+                "checks": {},
+                "return": {
+                  "200": {
+                    "description": "Success",
+                    "data": {
+                      "prisma": {
+                        "model": "User",
+                        "action": "findUnique",
+                        "args": {
+                          "where": {
+                            "id": {
+                              "parseInt": "{id}"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "404": {
+                    "description": "User not found"
+                  }
+                }
+              },
+              {
+                "path": "/",
+                "methods": ["POST"],
+                "action": "Create a new user",
+                "function": "createUser",
+                "checks": {},
+                "return": {
+                  "201": {
+                    "description": "User created successfully",
+                    "data": {
+                      "prisma": {
+                        "model": "User",
+                        "action": "create",
+                        "args": {
+                          "data": "{body}"
+                        }
+                      }
+                    }
+                  },
+                  "400": {
+                    "description": "Bad Request"
+                  }
+                }
+              },
+              {
+                "path": "/users/{id}",
+                "methods": ["PUT"],
+                "action": "Update user details by ID",
+                "function": "updateUserById",
+                "checks": {},
+                "return": {
+                  "200": {
+                    "description": "User updated successfully",
+                    "data": {
+                      "prisma": {
+                        "model": "User",
+                        "action": "update",
+                        "args": {
+                          "where": {
+                            "id": {
+                              "parseInt": "{id}"
+                            }
+                          },
+                          "data": "{body}"
+                        }
+                      }
+                    }
+                  },
+                  "404": {
+                    "description": "User not found"
+                  }
+                }
+              },
+              {
+                "path": "/{id}",
+                "methods": ["DELETE"],
+                "action": "Delete user by ID",
+                "function": "deleteUserById",
+                "checks": {},
+                "return": {
+                  "200": {
+                    "description": "User deleted successfully",
+                    "data": {
+                      "prisma": {
+                        "model": "User",
+                        "action": "delete",
+                        "args": {
+                          "where": {
+                            "id": {
+                              "parseInt": "{id}"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "404": {
+                    "description": "User not found"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "PostModule",
+        "resources": [
+          {
+            "moduleEndpoint": "posts",
+            "endpoints": [
+              {
+                "path": "/",
+                "methods": ["GET"],
+                "action": "Retrieve all posts",
+                "function": "getAllPosts",
+                "checks": {},
+                "return": {
+                  "200": {
+                    "description": "Success",
+                    "data": {
+                      "prisma": {
+                        "model": "Post",
+                        "action": "findMany",
+                        "args": {}
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "/{id}",
+                "methods": ["GET"],
+                "action": "Retrieve post by ID",
+                "function": "getPostById",
+                "checks": {},
+                "return": {
+                  "200": {
+                    "description": "Success",
+                    "data": {
+                      "prisma": {
+                        "model": "Post",
+                        "action": "findUnique",
+                        "args": {
+                          "where": {
+                            "id": {
+                              "parseInt": "{id}"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "404": {
+                    "description": "Post not found"
+                  }
+                }
+              },
+              {
+                "path": "/",
+                "methods": ["POST"],
+                "action": "Create a new post",
+                "function": "createPost",
+                "checks": {},
+                "return": {
+                  "201": {
+                    "description": "Post created successfully",
+                    "data": {
+                      "prisma": {
+                        "model": "Post",
+                        "action": "create",
+                        "args": {
+                          "data": "{body}"
+                        }
+                      }
+                    }
+                  },
+                  "400": {
+                    "description": "Bad Request"
+                  }
+                }
+              },
+              {
+                "path": "/{id}",
+                "methods": ["PUT"],
+                "action": "Update post by ID",
+                "function": "updatePostById",
+                "checks": {},
+                "return": {
+                  "200": {
+                    "description": "Post updated successfully",
+                    "data": {
+                      "prisma": {
+                        "model": "Post",
+                        "action": "update",
+                        "args": {
+                          "where": {
+                            "id": {
+                              "parseInt": "{id}"
+                            }
+                          },
+                          "data": "{body}"
+                        }
+                      }
+                    }
+                  },
+                  "404": {
+                    "description": "Post not found"
+                  }
+                }
+              },
+              {
+                "path": "/{id}",
+                "methods": ["DELETE"],
+                "action": "Delete post by ID",
+                "function": "deletePostById",
+                "checks": {},
+                "return": {
+                  "200": {
+                    "description": "Post deleted successfully",
+                    "data": {
+                      "prisma": {
+                        "model": "Post",
+                        "action": "delete",
+                        "args": {
+                          "where": {
+                            "id": {
+                              "parseInt": "{id}"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "404": {
+                    "description": "Post not found"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  
