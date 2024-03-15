@@ -8,7 +8,7 @@
           "endpoints": [
             {
               "path": "/",
-              "methods": ["GET"],
+              "methods": ["Get"],
               "action": "Retrieve all user details",
               "function": "getAllUsers",
               "checks": {},
@@ -29,8 +29,8 @@
               }
             },
             {
-              "path": "/{id}",
-              "methods": ["GET"],
+              "path": "/:id",
+              "methods": ["Get"],
               "action": "Retrieve user details by ID",
               "function": "getUserById",
               "checks": {},
@@ -44,7 +44,7 @@
                       "args": {
                         "where": {
                           "id": {
-                            "parseInt": "{id}"
+                            "parseInt": ":id"
                           }
                         }
                       }
@@ -58,7 +58,7 @@
             },
             {
               "path": "/",
-              "methods": ["POST"],
+              "methods": ["Post"],
               "action": "Create a new user",
               "function": "createUser",
               "checks": {},
@@ -81,8 +81,8 @@
               }
             },
             {
-              "path": "/users/{id}",
-              "methods": ["PUT"],
+              "path": "/users/:id",
+              "methods": ["Put"],
               "action": "Update user details by ID",
               "function": "updateUserById",
               "checks": {},
@@ -96,7 +96,7 @@
                       "args": {
                         "where": {
                           "id": {
-                            "parseInt": "{id}"
+                            "parseInt": ":id"
                           }
                         },
                         "data": "{body}"
@@ -110,8 +110,8 @@
               }
             },
             {
-              "path": "/{id}",
-              "methods": ["DELETE"],
+              "path": "/:id",
+              "methods": ["Delete"],
               "action": "Delete user by ID",
               "function": "deleteUserById",
               "checks": {},
@@ -125,7 +125,7 @@
                       "args": {
                         "where": {
                           "id": {
-                            "parseInt": "{id}"
+                            "parseInt": ":id"
                           }
                         }
                       }
@@ -149,7 +149,7 @@
           "endpoints": [
             {
               "path": "/",
-              "methods": ["GET"],
+              "methods": ["Get"],
               "action": "Retrieve all posts",
               "function": "getAllPosts",
               "checks": {},
@@ -167,8 +167,8 @@
               }
             },
             {
-              "path": "/{id}",
-              "methods": ["GET"],
+              "path": "/:id",
+              "methods": ["Get"],
               "action": "Retrieve post by ID",
               "function": "getPostById",
               "checks": {},
@@ -182,7 +182,7 @@
                       "args": {
                         "where": {
                           "id": {
-                            "parseInt": "{id}"
+                            "parseInt": ":id"
                           }
                         }
                       }
@@ -196,7 +196,7 @@
             },
             {
               "path": "/",
-              "methods": ["POST"],
+              "methods": ["Post"],
               "action": "Create a new post",
               "function": "createPost",
               "checks": {},
@@ -219,8 +219,8 @@
               }
             },
             {
-              "path": "/{id}",
-              "methods": ["PUT"],
+              "path": "/:id",
+              "methods": ["Put"],
               "action": "Update post by ID",
               "function": "updatePostById",
               "checks": {},
@@ -234,7 +234,7 @@
                       "args": {
                         "where": {
                           "id": {
-                            "parseInt": "{id}"
+                            "parseInt": ":id"
                           }
                         },
                         "data": "{body}"
@@ -248,8 +248,8 @@
               }
             },
             {
-              "path": "/{id}",
-              "methods": ["DELETE"],
+              "path": "/:id",
+              "methods": ["Delete"],
               "action": "Delete post by ID",
               "function": "deletePostById",
               "checks": {},
@@ -263,7 +263,7 @@
                       "args": {
                         "where": {
                           "id": {
-                            "parseInt": "{id}"
+                            "parseInt": ":id"
                           }
                         }
                       }
