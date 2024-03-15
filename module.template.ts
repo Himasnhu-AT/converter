@@ -81,7 +81,41 @@ function generateServiceMethod(endpoint: Endpoint): string {
       endpoint.return[200]?.data
         ? `return await this.prisma.${
             endpoint.return[200].data!.prisma.model
-          }.${endpoint.return[200].data?.prisma.action}({})`
+          }.${endpoint.return[200].data?.prisma.action}({
+            ${
+              endpoint.return[200].data?.prisma.select
+                ? `select: ${JSON.stringify(
+                    endpoint.return[200].data?.prisma.select
+                  )}`
+                : ""
+            }${
+            endpoint.return[200].data?.prisma.include
+              ? `,\ninclude: ${JSON.stringify(
+                  endpoint.return[200].data?.prisma.include
+                )}`
+              : ""
+          }${
+            endpoint.return[200].data?.prisma.skip
+              ? `,\nskip: ${endpoint.return[200].data?.prisma.skip}`
+              : ""
+          }${
+            endpoint.return[200].data?.prisma.take
+              ? `,\ntake: ${endpoint.return[200].data!.prisma.take}`
+              : ""
+          }${
+            endpoint.return[200].data?.prisma.orderBy
+              ? `,\norderBy: ${JSON.stringify(
+                  endpoint.return[200].data?.prisma.orderBy
+                )}`
+              : ""
+          }${
+            endpoint.return[200].data?.prisma.where
+              ? `,\nwhere: ${JSON.stringify(
+                  endpoint.return[200].data?.prisma.where
+                )}`
+              : ""
+          }
+          })`
         : ""
     }
   } catch(e) {
@@ -90,6 +124,56 @@ function generateServiceMethod(endpoint: Endpoint): string {
   }
 }`;
 }
+
+// function generateServiceMethod(endpoint: Endpoint): string {
+//   return `\nasync ${endpoint.function}() {
+//   try {
+//     ${
+//       endpoint.return[200]?.data
+//         ? `return await this.prisma.${
+//             endpoint.return[200].data!.prisma.model
+//           }.${endpoint.return[200].data?.prisma.action}({
+//             where: {
+//       ${
+//         endpoint.return[200].data?.prisma.where
+//           ? endpoint.return[200].data?.prisma.where
+//               .map((param) => {
+//                 return `${param.name}: ${param.value}`;
+//               })
+//               .join(", ")
+//           : ""
+//       }
+//     },
+//     select: {
+//       ${
+//         endpoint.return[200].data?.prisma.select
+//           ? endpoint.return[200].data?.prisma.select
+//               .map((param) => {
+//                 return `${param.name}: ${param.value}`;
+//               })
+//               .join(", ")
+//           : ""
+//       }
+//     },
+//     include: {
+//       ${
+//         endpoint.return[200].data?.prisma.include
+//           ? endpoint.return[200].data?.prisma.include
+//               .map((param) => {
+//                 return `${param.name}: ${param.value}`;
+//               })
+//               .join(", ")
+//           : ""
+//       }
+//           })`
+//         : ""
+//     }
+//   } catch(e) {
+//     console.error(\`Failed ${endpoint.function} Server Error 500:\`);
+//     console.error(e);
+//   }
+// }`;
+// }
 
 function generateService(moduleName: string, methods: string): string {
   return `import { Injectable } from '@nestjs/common';

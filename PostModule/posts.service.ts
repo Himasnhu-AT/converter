@@ -6,7 +6,9 @@ export class PostModuleService {
 
 async getAllPosts() {
   try {
-    return await this.prisma.Post.findMany({})
+    return await this.prisma.Post.findMany({
+            
+          })
   } catch(e) {
     console.error(`Failed getAllPosts Server Error 500:`);
     console.error(e);
@@ -15,7 +17,9 @@ async getAllPosts() {
 
 async getPostById() {
   try {
-    return await this.prisma.Post.findUnique({})
+    return await this.prisma.Post.findUnique({
+            
+          })
   } catch(e) {
     console.error(`Failed getPostById Server Error 500:`);
     console.error(e);
@@ -33,7 +37,9 @@ async createPost() {
 
 async updatePostById() {
   try {
-    return await this.prisma.Post.update({})
+    return await this.prisma.Post.update({
+            
+          })
   } catch(e) {
     console.error(`Failed updatePostById Server Error 500:`);
     console.error(e);
@@ -42,7 +48,9 @@ async updatePostById() {
 
 async deletePostById() {
   try {
-    return await this.prisma.Post.delete({})
+    return await this.prisma.Post.delete({
+            
+          })
   } catch(e) {
     console.error(`Failed deletePostById Server Error 500:`);
     console.error(e);

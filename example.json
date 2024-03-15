@@ -19,7 +19,8 @@
                     "prisma": {
                       "model": "User",
                       "action": "findMany",
-                      "args": {}
+                      "select": ["id", "name", "email"],
+                      "include": ["posts"]
                     }
                   }
                 },
