@@ -5,23 +5,27 @@ export interface EndpointReturn {
       prisma: {
         model: string;
         action: string;
-        select: {
-          [key: string]: string;
-        }[];
-        include: {
-          [key: string]: string;
-        }[];
-        skip?: number;
-        take?: number;
-        orderBy?: {
-          [key: string]: string;
-        };
-        where?: {
-          [key: string]: string;
-        }[];
+        args: Args;
       };
     };
   };
+}
+
+export interface Args {
+  select: {
+    [key: string]: string;
+  }[];
+  include: {
+    [key: string]: string;
+  }[];
+  skip?: number;
+  take?: number;
+  orderBy?: {
+    [key: string]: string;
+  };
+  where?: {
+    [key: string]: string;
+  }[];
 }
 
 export interface Endpoint {

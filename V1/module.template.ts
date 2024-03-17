@@ -83,35 +83,35 @@ function generateServiceMethod(endpoint: Endpoint): string {
             endpoint.return[200].data!.prisma.model
           }.${endpoint.return[200].data?.prisma.action}({
             ${
-              endpoint.return[200].data?.prisma.select
+              endpoint.return[200].data?.prisma.args!.select
                 ? `select: ${JSON.stringify(
-                    endpoint.return[200].data?.prisma.select
+                    endpoint.return[200].data?.prisma.args.select
                   )}`
                 : ""
             }${
-            endpoint.return[200].data?.prisma.include
+            endpoint.return[200].data?.prisma.args.include
               ? `,\ninclude: ${JSON.stringify(
-                  endpoint.return[200].data?.prisma.include
+                  endpoint.return[200].data?.prisma.args.include
                 )}`
               : ""
           }${
-            endpoint.return[200].data?.prisma.skip
-              ? `,\nskip: ${endpoint.return[200].data?.prisma.skip}`
+            endpoint.return[200].data?.prisma.args.skip
+              ? `,\nskip: ${endpoint.return[200].data?.prisma.args.skip}`
               : ""
           }${
-            endpoint.return[200].data?.prisma.take
-              ? `,\ntake: ${endpoint.return[200].data!.prisma.take}`
+            endpoint.return[200].data?.prisma.args.take
+              ? `,\ntake: ${endpoint.return[200].data!.prisma.args.take}`
               : ""
           }${
-            endpoint.return[200].data?.prisma.orderBy
+            endpoint.return[200].data?.prisma.args.orderBy
               ? `,\norderBy: ${JSON.stringify(
-                  endpoint.return[200].data?.prisma.orderBy
+                  endpoint.return[200].data?.prisma.args.orderBy
                 )}`
               : ""
           }${
-            endpoint.return[200].data?.prisma.where
+            endpoint.return[200].data?.prisma.args.where
               ? `,\nwhere: ${JSON.stringify(
-                  endpoint.return[200].data?.prisma.where
+                  endpoint.return[200].data?.prisma.args.where
                 )}`
               : ""
           }
