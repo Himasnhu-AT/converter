@@ -1,0 +1,15 @@
+{
+  "name": "converter-v2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "code": "cd parser && tsc cli.ts && node cli.js ../examples/test/example1.json",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.11.28"
+  }
+}

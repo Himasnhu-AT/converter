@@ -1,0 +1,63 @@
+{
+  "application": {
+    "name": "MyNestApp",
+    "description": "A sample Nest.js application generated with a no-code backend builder",
+    "version": "1.0.0",
+    "author": "John Doe",
+    "createdAt": "2024-03-17",
+    "updatedAt": "2024-03-17"
+  },
+  "modules": [
+    {
+      "name": "UserModule",
+      "description": "Module for managing user-related functionalities",
+      "resources": [
+        {
+          "moduleEndpoint": "/users",
+          "description": "Endpoint for user-related operations",
+          "endpoints": [
+            {
+              "path": "/",
+              "description": "Get all users",
+              "methods": ["GET"],
+              "action": "getAllUsers",
+              "function": "getAllUsersFunction",
+              "checks": {},
+              "input_schema": "",
+              "output_schema": "",
+              "auth_required": false,
+              "middleware": "",
+              "integrations": [],
+              "service": "userService",
+              "return": {
+                "200": {
+                  "description": "Success",
+                  "data": {
+                    "prisma": {
+                      "model": "User",
+                      "action": "findMany",
+                      "args": {
+                        "select": [
+                          {
+                            "id": "string",
+                            "name": "string",
+                            "email": "string"
+                          }
+                        ],
+                        "include": [],
+                        "skip": 0,
+                        "take": 10,
+                        "orderBy": { "id": "asc" },
+                        "where": []
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
