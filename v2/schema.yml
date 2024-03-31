@@ -15,17 +15,17 @@ modules:
         endpoints:
           - path: string # URL path of the endpoint
             description: string # Description of the endpoint
-            methods: [string] # Array of HTTP methods (e.g., GET, POST, PUT, DELETE)
+            methods: string # Array of HTTP methods (e.g., GET, POST, PUT, DELETE)
             action: string # Action associated with the endpoint
             function: string # Name of the function associated with the endpoint
             checks: # Object representing checks for the endpoint
               [key: string]: any
-            input_schema: string # Input schema for the endpoint
-            output_schema: string # Output schema for the endpoint
+            # input_schema: string # Input schema for the endpoint
+            # output_schema: string # Output schema for the endpoint
             auth_required: boolean # Indicates if authentication is required for the endpoint
             middleware: string # Name of the middleware applied to the endpoint
             integrations: [string] # List of integrations used by the endpoint
-            service: string # Name of the service associated with the endpoint
+            # service: string # Name of the service associated with the endpoint
             return: # Return structure for the endpoint
               [statusCode: string]:
                 description: string

@@ -20,13 +20,27 @@ export interface EndpointReturn {
   };
 }
 
+export interface CheckTypes {
+  if: string[];
+  // so on...
+}
+
+export interface Requirement {
+  Headers: {
+    key: string;
+    value: string | number | boolean | JSON;
+  };
+  Body: {};
+}
 export interface Endpoint {
   path: string;
-  methods: string[];
+  description: string;
+  methods: string;
   action: string;
   function: string;
-  checks: { [key: string]: any };
+  checks: { [key: string]: CheckTypes };
   return: EndpointReturn;
+  req: Requirement;
 }
 
 export interface Resource {
