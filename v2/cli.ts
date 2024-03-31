@@ -1,6 +1,5 @@
-import createModuleTemplateCode from "../converter/converter.service";
-import { JSONStructure } from "../types/types";
-import { ParseJson } from "./parser.service";
+import { JSONStructure } from "./src/types/types";
+import { ParseJson } from "./src/parser/parser.service";
 
 export function main(argv: string[]) {
   console.warn(argv);
@@ -18,7 +17,7 @@ export function main(argv: string[]) {
   }
 
   parsedJson!.modules.forEach((module) => {
-    createModuleTemplateCode(module);
+    // createModuleTemplateCode(module);
   });
 }
 
