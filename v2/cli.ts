@@ -1,5 +1,6 @@
 import { JSONStructure } from "./src/types/types";
 import { ParseJson } from "./src/parser/parser.service";
+import { generateNestJSCodeFromFilePath } from "./src/converter/main.converter";
 
 export function main(argv: string[]) {
   console.warn(argv);
@@ -10,15 +11,8 @@ export function main(argv: string[]) {
 
   const filePath = argv[2];
   console.log(filePath);
-  const parsedJson: JSONStructure | null = ParseJson(filePath);
-  if (parsedJson === null) {
-    console.error("Invalid JSON file.");
-    process.exit(1);
-  }
 
-  parsedJson!.modules.forEach((module) => {
-    // createModuleTemplateCode(module);
-  });
+  generateNestJSCodeFromFilePath(filePath);
 }
 
 main(process.argv);
