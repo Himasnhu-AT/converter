@@ -43,16 +43,11 @@ export interface Endpoint {
   req: Requirement;
 }
 
-export interface Resource {
-  moduleEndpoint: string;
-  description: string;
-  endpoints: Endpoint[];
-}
-
 export interface Module {
   name: string;
   description: string;
-  resources: Resource[];
+  endpoint: string;
+  endpoints: Endpoint[];
 }
 
 export interface Application {

@@ -1,3 +1,10 @@
+/**
+ * Generates the skeleton code for a controller class.
+ *
+ * @param moduleName - The name of the module.
+ * @param methods - The methods to be included in the controller.
+ * @returns The generated controller code.
+ */
 export function SkeletonController(
   moduleName: string,
   methods: string
