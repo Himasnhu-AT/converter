@@ -2,6 +2,8 @@ import { ParseJson } from "../parser/parser.service";
 import { ApiRestRequest } from "../templates/controller/methods/api-rest/middleware";
 import { SkeletonController } from "../templates/controller/skeletons.controller";
 import { SimpleModule } from "../templates/modules/simple.module";
+import { generateServiceMethod } from "../templates/services/methods/service.methods";
+import { SkeletonService } from "../templates/services/skeletons.services";
 import { JSONStructure } from "../types/types";
 import { WriteToFile } from "./writeToFile.converter";
 
@@ -31,10 +33,14 @@ export function generateNestJSCode(JSONData: JSONStructure) {
         endpoint.function
       );
 
+      serviceMethodCode += generateServiceMethod(endpoint);
+
       // TODO implement service method too
     });
 
     controllerCode = SkeletonController(module.name, controllerMethodCode);
+    serviceCode = SkeletonService(module.name, serviceMethodCode);
     console.warn("CONTROLLER CODE: " + controllerCode + "\n\n\n\n");
+    console.warn("SERVICE CODE: ", serviceCode);
   });
 }
