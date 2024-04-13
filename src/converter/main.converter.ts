@@ -15,7 +15,7 @@ export function generateNestJSCodeFromFilePath(filePath: string) {
 }
 
 export function generateNestJSCode(JSONData: JSONStructure) {
-  JSONData.modules.forEach((module) => {
+  JSONData.modules.forEach(async (module) => {
     var controllerCode: string = "";
     var controllerMethodCode: string = "";
     var serviceCode: string = "";
@@ -41,7 +41,7 @@ export function generateNestJSCode(JSONData: JSONStructure) {
       moduleCode
     );
 
-    module.endpoints.forEach((endpoint) => {
+    module.endpoints.forEach(async (endpoint) => {
       controllerMethodCode += ApiRestRequest(
         endpoint.methods,
         endpoint.path,

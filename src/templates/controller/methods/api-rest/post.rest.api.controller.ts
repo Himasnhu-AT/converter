@@ -7,15 +7,17 @@ export function GetPostApiMethod(
   Query?: string,
   Response?: string
 ): string {
-  return `@Post('${endpoint}')
-    async ${functionName}(
-        ${Headers ? `@Headers() headers: ${Headers},` : ""}
-        ${Params ? `@Params() params: ${Params},` : ""}
-        ${Body ? `@Body() body: ${Body},` : ""}
-        ${Query ? `@Query() query: ${Query},` : ""}
-        ${Response ? `@Response() response: ${Response},` : ""}
-    ) {
-        return await this.controllerService.${functionName}();
-    }
-    `;
+  var output: string = "";
+  output += `@Post('${endpoint}')`;
+  output += ` async ${functionName}(`;
+  output += `     ${Headers ? `@Headers() headers: ${Headers},` : ""}`;
+  output += `     ${Params ? `@Params() params: ${Params},` : ""}`;
+  output += `     ${Body ? `@Body() body: ${Body},` : ""}`;
+  output += `     ${Query ? `@Query() query: ${Query},` : ""}`;
+  output += `     ${Response ? `@Response() response: ${Response},` : ""}`;
+  output += ` ) {`;
+  output += `     return await this.controllerService.${functionName}();`;
+  output += ` }`;
+
+  return output;
 }

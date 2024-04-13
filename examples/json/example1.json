@@ -36,12 +36,12 @@
                   "args": {
                     "select": [
                       {
-                        "id": "string",
-                        "name": "string",
-                        "email": "string"
+                        "id": "true",
+                        "name": "true",
+                        "email": "true"
                       }
                     ],
-                    "include": [],
+                    "include": ["halfassed value"],
                     "skip": 0,
                     "take": 10,
                     "orderBy": { "id": "asc" },
