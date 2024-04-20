@@ -1,6 +1,8 @@
+import { Field } from "../../dynamo-prisma/dynamoPrisma.types";
+
 export interface Args {
-  select: { [key: string]: string }[];
-  include: { [key: string]: string }[];
+  select?: { [key: string]: string }[];
+  include?: { [key: string]: string }[];
   skip?: number;
   take?: number;
   orderBy?: { [key: string]: string };
@@ -62,4 +64,5 @@ export interface Application {
 export interface JSONStructure {
   application: Application;
   modules: Module[];
+  schema: [{ schemaName: string; fields: Field[]; description: string }];
 }

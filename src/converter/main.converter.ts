@@ -1,3 +1,4 @@
+import { spawn, exec } from "child_process";
 import { ParseJson } from "../parser/parser.service";
 import { ApiRestRequest } from "../templates/controller/methods/api-rest/middleware";
 import { SkeletonController } from "../templates/controller/skeletons.controller";
@@ -8,10 +9,28 @@ import { generateServiceMethod } from "../templates/services/methods/service.met
 import { SkeletonService } from "../templates/services/skeletons.services";
 import { JSONStructure } from "../types/types";
 import { WriteToFile } from "./writeToFile.converter";
+import NewNestApp from "./newNestApp";
+import { generateIfNoSchema } from "../../dynamo-prisma/fileExists";
 
-export function generateNestJSCodeFromFilePath(filePath: string) {
+export function generateNestJSCodeFromFilePath(filePath: string, runStep) {
   const parsedJson: JSONStructure = ParseJson(filePath);
-  generateNestJSCode(parsedJson);
+  console.log("Starting ...");
+
+  const updatedName = parsedJson.application.name
+    .replace(/ /g, "")
+    .toLowerCase();
+
+  if (runStep == 1) {
+    console.log(`generating nest app wth name ${updatedName}`);
+    NewNestApp(updatedName);
+  }
+  if (runStep == 2) {
+    generateIfNoSchema({ schema: parsedJson.schema });
+  }
+
+  if (runStep == 3) generateNestJSCode(parsedJson);
+
+  console.error("Choose from 1, 2, 3");
 }
 
 export function generateNestJSCode(JSONData: JSONStructure) {

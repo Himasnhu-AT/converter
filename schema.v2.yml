@@ -1,0 +1,26 @@
+application: 
+  name: string # Name of the application
+  description: string # Description of the application
+  version: string # Version of the application
+  author: string # Author of the application
+  createdAt: string # Date of creation of the application
+  updatedAt: string # Date of last update of the application
+
+modules: # //? TYPE: Array example: USERMODULE
+    name: string # Name of the module
+    description: string # Description of the module
+    moduleEndpoint: string # Module endpoint #//? example: /user
+    endpoints: # //? TYPE: Array
+        path: string # URL path of the endpoint #//? example: /profile
+        description: string # Description of the endpoint
+        methods: string # HTTP method (e.g., GET, POST, PUT, DELETE)
+        action: string[] # Action associated with the endpoint #//? example: [ if user is admin, return all users, if user is not admin, return only the user's profile]
+        function: string # Name of the function associated with the endpoint
+        checks: { # Object representing checks for the endpoint
+          [key: string]: any
+        }
+        input_schema: string # Input schema for the endpoint
+        output_schema: string # Output schema for the endpoint
+        auth_required: boolean # Indicates if authentication is required for the endpoint
+        integrations: string[] # List of integrations used by the endpoint
+        middleware: string # Name of the middleware applied to the endpoint
