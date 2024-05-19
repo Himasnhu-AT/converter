@@ -1,0 +1,44 @@
+server: # Server configuration
+  port: 3000 # Port to run the server on
+  cors: true
+
+database: # Database configuration
+  type: postgres # Type of database
+  host: localhost # Host of the database
+  port: 5432 # Port of the database
+  username: test # Username for the database
+  password: test # Password for the database
+  database: test # Database name
+
+api: # API configuration
+  - path: /users # Path of the API
+    method: GET # HTTP method
+    function: getUsers # Function associated with the API
+    auth_required: true # Indicates if authentication is required for the API
+    action:  # Action associated with the API
+      - return:
+          code: 200
+          description: Get all users
+          data: prisma
+          model: User
+          action: findMany
+          args:
+            select:
+              - id
+              - name
+              - email
+            skip: 0
+            take: 10
+            orderBy:
+              id: desc
+            where:
+              id: 1
+
+models: # Model configuration
+  - name: User # Name of the model
+    fields: # Fields of the model
+      id: number # ID field
+      name: string # Name field
+      email: # Email field
+        type: string # Type of the field
+        validation: email # Validation for the field

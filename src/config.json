@@ -1,0 +1,57 @@
+{
+  "server": {
+    "port": 3000,
+    "cors": true
+  },
+  "database": {
+    "type": "postgres",
+    "host": "localhost",
+    "port": 5432,
+    "username": "test",
+    "password": "test",
+    "database": "test"
+  },
+  "api": [
+    {
+      "path": "/users",
+      "method": "GET",
+      "function": "getUsers",
+      "action": {
+        "prisma": "findMany",
+        "model": "User",
+        "return": 200
+      }
+    },
+    {
+      "path": "/posts",
+      "method": "POST",
+      "function": "createPost",
+      "action": {
+        "prisma": "create",
+        "model": "Post",
+        "return": 201
+      }
+    }
+  ],
+  "models": [
+    {
+      "name": "User",
+      "fields": {
+        "id": "number",
+        "name": "string",
+        "email": {
+          "type": "string",
+          "validation": "email"
+        }
+      }
+    },
+    {
+      "name": "Post",
+      "fields": {
+        "id": "number",
+        "title": "string",
+        "content": "string"
+      }
+    }
+  ]
+}
