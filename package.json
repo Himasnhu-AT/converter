@@ -22,8 +22,6 @@
     "@nestjs/common": "^10.3.8",
     "@nestjs/schematics": "^10.1.1",
     "@nestjs/testing": "^10.3.3",
-    "@types/es6-promise": "^3.3.0",
-    "prisma-schema-dsl": "^2.2.0",
-    "prisma-schema-dsl-types": "^1.1.2"
+    "@types/es6-promise": "^3.3.0"
   }
 }
